@@ -1,0 +1,155 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+del{
+  color:  gray;
+  margin-right: 10px;
+}
+
+.container-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.offcanvas{
+  color: gray;
+}
+
+.buttonsPrimary > button {
+  width: 100%;
+}
+
+.list-group > a{
+  border: solid 1px rgb(0, 0, 0);
+  color: #0ab4b5;
+}
+
+#productFinder > input{
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 4px;
+
+}
+
+.navbar-toggler{
+  height: 100px;
+}
+
+.product-card img {
+  background-color: #fff;
+  height: 300px;
+  width: 300px;
+  border: solid gray 1px;
+  border-radius: 15px;
+}
+
+#productCard{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 10px;
+  
+  margin-top: 200px;
+  margin-bottom: 50px;
+  
+}
+
+.product-card-content {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-category {
+  color: #333;
+  font-size: 12px;
+  font-weight: bold;
+}
+.product-name {
+  color: #333;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 8px 0;
+}
+
+.product-price {
+  color: #0ab4b5;
+  font-weight: bold;
+}
+.product-discount {
+  font-size: 13px;
+  color: #555;
+  margin-top: 4px;
+}
+
+.button-cart {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.button-cart button {
+  background-color: #cd6804;
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: "Fira Sans";
+  max-width: 160px;
+  width: 100%;
+  height: 40px;
+}
+
+#shopCart{
+  margin-top: 150px;
+}
+
+#btnAdd{
+    background-color: #981b1b;
+    color: #fff;
+    border: 0;
+    border-radius: 5px;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: "Fira Sans";
+    max-width: 160px;
+    margin-right: 15px;
+    width: 30px;
+    height: 30px;  
+}
+
+#btnRemove{
+  background-color: #26278e;
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: "Fira Sans";
+  max-width: 160px;
+  margin-left: 15px;
+  width: 30px;
+  height: 30px;  
+}
+
+#btnDelete{
+  background-color: #981b1b;
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: "Fira Sans";
+  max-width: 160px;
+  margin-right: 15px;
+  width: 150px;
+  height: 50px;  
+}

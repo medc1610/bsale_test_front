@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Xk Pagina Web</title>
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  </head>
+
+  <body class="container">
+    
+      <div class="main">       
+        <nav class="navbar navbar-dark bg-dark fixed-top">
+          <div class="container-fluid">
+            <a class="navbar-brand"><img src=".\assets\img\Bsale.png" ></a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body">
+                
+                <form class="d-flex mb-3" action="submit" id="productFinder">
+                  <input class="form-control me-2" value="Ingresa tu producto" type="text" name="productName" id="InputSearch" onInput="validarInput()"/>
+                  <button class="btn btn-primary" type="submit" name="Search" id="btnValidar">Buscar</button>                
+                </form>  
+                
+                <div class="buttonsPrimary">
+                  <button  class="btn btn-success mb-3" onclick="getPagination(0)">
+                    Inicio
+                  </button>
+  
+                  <button  class="btn btn-danger mb-3" onclick="showCart()">
+                    Carrito
+                  </button> 
+                </div>                
+
+                <div class="list-group">
+                  <h5 class="offcanvas-title mb-3" >Categorias</h5>
+                  <button class="btn btn-outline-dark mb-1" onclick="getCategoryById(1)">
+                    Bebidas energeticas
+                  </button>
+                  <button class="btn btn-outline-dark mb-1"  onclick="getCategoryById(2)">
+                    Pisco
+                  </button>
+                  <button class="btn btn-outline-dark mb-1"  onclick="getCategoryById(3)">
+                    Ron
+                  </button>
+                  <button class="btn btn-outline-dark mb-1"  onclick="getCategoryById(4)">
+                    Bebida
+                  </button>
+                  <button class="btn btn-outline-dark mb-1"  onclick="getCategoryById(5)">
+                    Snack
+                  </button>
+                  <button class="btn btn-outline-dark mb-1"  onclick="getCategoryById(6)">
+                    Cerveza
+                  </button>
+                  <button class="btn btn-outline-dark mb-1" onclick="getCategoryById(7)">
+                    Vodka
+                  </button>                    
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>   
+
+    <div id="homeStore">
+      <section class="products-section">
+        <div class="product-card">
+          <div id="productCard">  
+          </div>       
+        </div> 
+      </section>
+      
+      <footer aria-label="Page navigation example">
+        <ul class="pagination pagination justify-content-end">
+          <li class="page-item"><a class="page-link" onclick="getPagination(-1)">Anterior</a></li>        
+          <li class="page-item"><a class="page-link" onclick="getPagination(1)">Siguiente</a></li>
+        </ul>  
+      </footer>
+    </div>
+    
+    <div id="shopCart">      
+        <table class="table table-dark table-hover" id="cartTable">
+          <thead>
+            <tr>
+              <th scope="col">Producto</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Descuento</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Subtotal</th>
+              <th scope="col">Eliminar</th>
+            </tr>
+          </thead>
+          <tbody id="cartTableBody">
+          </tbody>
+        </table>
+
+        <table class="table table-dark table-striped" id="totalTable">
+          <thead>
+            <tr>
+              <th scope="col">Total: </th>
+              <th scope="col" id="totalTableBody" ></th>
+            </tr>
+          </thead>
+          
+        </table>      
+    </div>
+    
+
+    <script src="./assets/js/scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  </body>
+</html>
