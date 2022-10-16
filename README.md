@@ -1,6 +1,8 @@
 # BSALE TEST
 
 ## Primeros pasos
+## Ejercicio
+Construir una tienda online con base de datos entregada por la empresa, donde el candidato debera realizar Frontend y Backend.
 ## Pre Requisitos
 Para la realizacion de esta prueba se debera tener acceso a respectiva bas de datos la cual sera entregada por personal que tenga privilegio para entregar dichos datos.
 
