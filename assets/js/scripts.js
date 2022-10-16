@@ -1,13 +1,23 @@
 
 
+/**
+ * Elementos globales del codigo
+ */
 const path = 'https://bsaletestcart.herokuapp.com'
 let page = 0
 let shopCart = [] 
 
+
+/**
+ * se verifica si existe algo en localStorage, si existe algo dentro se agrega al arreglo de shopCart, sino se sigue con el codigo.
+ */
 if(localStorage.getItem('product')){
     shopCart = JSON.parse(localStorage.getItem('product'))
 }
 
+/**
+ * funciones para validar inputs 
+ */
 const validarInput = () => {
   document.getElementById("btnValidar").disabled = !document.getElementById("InputSearch").value.length;
 }
@@ -16,6 +26,12 @@ const validarInput2 = () => {
   document.getElementById("btnValidar2").disabled = !document.getElementById("InputSearch2").value.length;
 }
 
+/**
+ * 
+ * @param {argumento que se aloja en la variable product} param 
+ * @param {variable que aloja el template} html
+ * funcion que genera el template de productos
+ */
 const showProductsTemplate = (param) => {  
   let product = param
   
@@ -55,7 +71,12 @@ const showProductsTemplate = (param) => {
 }
 
 
-
+/**
+ * 
+ * @param {argumento que se aloja en la variable product} param 
+ * @param {variable que aloja el template} html
+ * funcion que genera el template del carrito de compras
+ */
 const showCartTemplate = (param) => {
 
   let product = JSON.parse(param)
@@ -104,10 +125,19 @@ const showCartTemplate = (param) => {
   document.getElementById('cartTableBody').innerHTML = html  
 }
 
+/**
+ * Funcion que verifica cantidad de productos en el carro de compras
+ * @param {argumento que recibe la id del producto} id 
+ * @returns 
+ */
 const quantityHtml = (id) => {
   return document.getElementById('quantity'+id).innerHTML
 }
 
+/**
+ * funcion para agregar mas cantidad de un producto
+ * @param {argumento que recibe la id del producto} id 
+ */
 const add = (id) => {  
     let product = JSON.parse(localStorage.getItem('product'))
     let index = product.findIndex(x => x.id === Number(id))
@@ -118,6 +148,10 @@ const add = (id) => {
     calculateTotalValue() 
   } 
   
+/**
+ * funcion para actualizar el valor de la cantidad de un producto
+ * @param {argumento que recibe la id del producto} id 
+ */  
 const updateCart = (id) => {
   let product = JSON.parse(localStorage.getItem('product'))
   let index = product.findIndex(x => x.id === Number(id))
@@ -125,6 +159,10 @@ const updateCart = (id) => {
   document.getElementById('total'+id).innerHTML = total + ' CLP'
 }
 
+/**
+ * funcion para restar la cantidad de un producto o remover un producto si llega la cantidad de  0
+ * @param {argumento que recibe la id del producto} id 
+ */
 const remove = (id) => {
   let product = JSON.parse(localStorage.getItem('product'))  
   let index = product.findIndex(x => x.id === Number(id))  
@@ -138,6 +176,10 @@ const remove = (id) => {
   }
 }
 
+/**
+ * funcion para calcular el precio total de todos los productos seleccionados
+ * @returns 
+ */
 const calculateTotalValue = () => {
   
   let products = JSON.parse(localStorage.getItem('product')) 
@@ -153,6 +195,9 @@ const calculateTotalValue = () => {
   
 }
 
+/**
+ * funcion para mostrar el carro de compra
+ */
 const showCart = () => {
   const showProducts = localStorage.getItem('product')
   document.getElementById('homeStore').style.display = 'none'
@@ -162,6 +207,10 @@ const showCart = () => {
   calculateTotalValue()  
 }
 
+/**
+ * funcion para eliminar un producto del carro de compras independiente de la cantidad de un producto
+ * @param {argumento que recibe la id del producto} id 
+ */
 const deleteProduct = (id) => {  
   let product = JSON.parse(localStorage.getItem('product'))  
   let newProduct = []
@@ -177,6 +226,10 @@ const deleteProduct = (id) => {
   
 }
 
+/**
+ * funcion para obtener productos paginados
+ * @param {argumento que recibe el numero de pagina} num
+ */
 getPagination = (num) => {
   document.getElementById('productFinderDiv').style.display = 'block'
   page = page + num  
@@ -209,6 +262,10 @@ getPagination = (num) => {
   } 
 }
 
+/**
+ * funcion para obtener todos los productos por su id
+ * @param {argumento que recibe la id del producto} id 
+ */
 const getProductById = (id) => {
   const requestOptions = {
     method: 'GET',
@@ -225,7 +282,10 @@ const getProductById = (id) => {
     })
     .catch(error => console.log('error', error));
 }
-  
+
+/**
+ * funcion para obtener productos por categoria
+ */
 const getCategories = () => {
   const requestOptions = {
     method: 'GET',
@@ -240,6 +300,10 @@ const getCategories = () => {
     .catch(error => console.log('error', error));
 }
 
+/**
+ * funcion para generar template de grupo de botones segun categoria
+ * @param {argumento que recibe la categoria del producto} categories 
+ */
 const categoriesTemplate = (categories) => {
   let html = ''
   for(let i in categories){
@@ -249,6 +313,10 @@ const categoriesTemplate = (categories) => {
   document.getElementById('categories2').innerHTML = html
 }
 
+/**
+ * funcion que obtiene la categoria por id
+ * @param {argumento que recibe la id del producto} id 
+ */
 const getCategoryById = async(id) => {  
   document.getElementById('productFinderDiv').style.display = 'block'
   const requestOptions = {
@@ -266,6 +334,10 @@ const getCategoryById = async(id) => {
     document.getElementById('shopCart').style.display = 'none'
 }
 
+/**
+ * funcion para obtener el nombre del produtcto
+ * @param {argumento que recibe el nombre del producto} name 
+ */
 const getProducts = async(name) => {
   const requestOptions = {
     method: 'GET',
@@ -277,9 +349,14 @@ const getProducts = async(name) => {
     .catch(error => console.log('error', error));
 }
 
+/**
+ * Constante para poder manipular el DOM de buscador
+ */
 const productFinder = document.getElementById('productFinder')
 
-
+/**
+ * Buscador de productos a tra ves de Input
+ */
 productFinder.addEventListener('submit', function (e){  
   e.preventDefault()
   let datos = new FormData(productFinder)
@@ -295,8 +372,14 @@ productFinder.addEventListener('submit', function (e){
     .catch(error => console.log('error', error));
 })
 
+/**
+ * Constante para poder manipular el DOM de buscador
+ */
 const productFinder2 = document.getElementById('productFinder2')
 
+/**
+ * Buscador de productos a tra ves de Input
+ */
 productFinder2.addEventListener('submit', function (e){  
   e.preventDefault()
   let datos = new FormData(productFinder2)
@@ -313,6 +396,9 @@ productFinder2.addEventListener('submit', function (e){
 })
 
 
+/**
+ * Funcion para inicializar otras funciones cada vez que se ejecute la paginaweb
+ */
 window.onload = () => {  
   getPagination()
   calculateTotalValue()
